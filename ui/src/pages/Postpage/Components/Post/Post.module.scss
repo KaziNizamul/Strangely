@@ -1,0 +1,110 @@
+.post {
+  width: 100%;
+  margin-bottom: 2rem;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+
+  .postTop {
+    display: flex;
+    position: relative;
+    padding: 15px;
+    align-items: center;
+  }
+
+  .postAvatar {
+    margin-right: 10px;
+  }
+
+  .postTopInfo {
+    > h3 {
+      font-size: medium;
+      margin-bottom: 4px;
+    }
+    > p {
+      font-size: small;
+      color: gray;
+    }
+  } 
+
+  .postBottom {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px 25px;
+    word-wrap: break-word;
+  }
+
+  .postImage { 
+    > img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  .postOptions {
+    border-top: 1px solid #eeeeee;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: medium;
+    color: gray;
+    cursor: pointer;
+    padding: 10px 15px;
+    
+    .postOption {
+      border-radius: 10px;
+      padding: 5px;
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.2s ease;
+
+      p {
+        margin-left: 10px;
+      }
+
+      &:hover {
+        background-color: #eff2f5;
+      }
+    }
+  
+  } 
+
+  .postHeaderContainer {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    display: flex;
+    .postHeadeInfo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-left: 1rem;
+      .userName {
+        font-size: 1.2rem;
+      }
+      .postTimestamp {
+        font-size: 1rem;
+      }
+    }
+    > img {
+      height: 4rem;
+    }
+    .userNameAndKebabContainer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      :global([class*='ant-dropdown-trigger']) {
+        padding: 0 0 0 6rem;
+      }
+      :global([class*='anticon anticon-ellipsis']) {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  .postBodyContainer {
+    padding: 1.5rem 1.5rem;
+  }
+}

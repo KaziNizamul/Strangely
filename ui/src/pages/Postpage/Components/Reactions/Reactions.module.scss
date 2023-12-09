@@ -1,0 +1,28 @@
+.postOptions {
+  border-top: 1px solid #eeeeee;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: medium;
+  color: gray;
+  cursor: pointer;
+  padding: 10px 15px;
+  
+  .postOption {
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease;
+
+    p {
+      margin-left: 10px;
+    }
+
+    &:hover {
+      background-color: #eff2f5;
+    }
+  }
+
+} 

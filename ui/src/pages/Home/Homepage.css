@@ -1,0 +1,31 @@
+/* Homepage.css */
+.sider {
+    background-color: #f0f2f5;
+    padding: 20px;
+    height: 100vh;
+  }
+  
+  .sider-button {
+    margin-bottom: 10px;
+  }
+  
+  .activity-row {
+    margin: 20px 0;
+  }
+  
+  .activity-card {
+    width: 240px;
+    margin: 20px;
+  }
+  
+  .activity-image {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .chat-section {
+    background-color: #f0f2f5;
+    padding: 20px;
+    height: 100vh;
+  }
+  

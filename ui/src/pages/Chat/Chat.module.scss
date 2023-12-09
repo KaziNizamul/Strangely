@@ -1,0 +1,75 @@
+$maxChatHeight: 95vh;
+.chatContainer {
+  padding-top: 6rem;
+  height: $maxChatHeight;
+  :global([class*='ce-wrapper']) {
+    height: $maxChatHeight;
+  }
+  :global([class*='ce-photo-section']) {
+    display: none;
+  }
+  form {
+    display: unset;
+    align-items: unset;
+    justify-content: unset;
+    flex-direction: unset;
+    padding: unset;
+    :global([id*='files']) {
+      display: none;
+    }
+  }
+  .renderChatFormContainer {
+    .groupChatCreateContainer {
+      display: flex;
+      font-size: 2rem;
+      padding: 2rem 1rem 0;
+      justify-content: space-between;
+      align-items: center;
+      .createNewGroupContainer {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        .createGroupChatText {
+          font-weight: bold;
+          font-size: 2.5rem;
+        }
+        .createGrpChatBtn {
+          font-size: 1.9rem;
+          border-radius: 2rem;
+          border: none;
+          background-color: #2990ff;
+          color: #fff;
+          padding: 0.5rem 1.3rem;
+          > img {
+            font-size: 1.5rem;
+          }
+        }
+      }
+      .newGroupChatTitle {
+        width: 85%;
+        > input {
+          border-radius: 2rem;
+        }
+      }
+    }
+    .directMsgChatContainer {
+      display: flex;
+      align-items: center;
+      padding: 2rem 1rem;
+      .inputContainer {
+        margin-right: 1rem;
+        width: 85%;
+        > input {
+          border-radius: 2rem;
+        }
+      }
+      .searchButton {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 2.3rem;
+      }
+    }
+  }
+}

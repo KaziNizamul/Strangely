@@ -1,0 +1,97 @@
+.messageSender {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 5rem;
+  .messageSenderTop {
+    margin-bottom: 2rem;
+    form {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem;
+      > :nth-child(1) {
+        border-radius: 2rem;
+        background-color: #fff;
+        border: 1px solid #b4b1b1;
+        &:hover {
+          background-color: #eeeeee;
+        }
+      }
+      button {
+        padding: 10px;
+        color: white;
+        background-color: #2e81f4;
+        border: none;
+        border-radius: 2px;
+        font-weight: 600;
+        &:hover {
+          background-color: #2e81f4cc;
+        }
+      }
+    }
+    .imageDisplayContainer {
+      display: flex;
+      justify-content: flex-start;
+      margin-left: 4rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      .fileContainer {
+        display: flex;
+        flex-direction: column;
+        .fileName {
+          text-wrap: nowrap;
+          font-size: 1rem;
+          max-width: 11ch;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+    .messageSenderInput {
+      padding: 10px;
+      border: none;
+      border-bottom: 1px solid #eff2f5;
+      outline-width: 0;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      max-width: 68rem;
+      min-width: 68rem;
+    }
+    .messageSenderFileSelector {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      .fileSelector {
+        display: flex;
+        gap: 0.5rem;
+        margin-left: 2rem;
+        align-items: start;
+        .fileSelectorText {
+          font-size: 1.5rem;
+        }
+        .fileSelectorLogo{
+          font-size: 1.7rem;
+          color: forestgreen;
+        }
+      }
+      .senderBtn {
+        padding-right: 1rem;
+        > svg {
+          font-size: 2rem;
+          transform: rotate(327deg);
+          margin-top: -2px;
+        }
+      }
+    }
+  }
+}
+
+.messageSenderFileLabel {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #eff2f5;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
