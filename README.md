@@ -593,7 +593,7 @@ For some of our APIs we have followed Test driven developement approach.
 
 # ☑️ Demo Video (Features) <a name = "demo"></a>
 
-![Demo Video](./maintainance_&_report/DemoVideo/DemoVideo.mov)
+![Demo Video](./maintainance_&_report/DemoVideo/DemoVideo.mp4)
 
 
 # Features
