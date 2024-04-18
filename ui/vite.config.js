@@ -2,11 +2,19 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import eslint from 'vite-plugin-eslint';
 import path from 'path';
+import fs from 'fs/promises';
 
 export default defineConfig({
   plugins: [react(), eslint()],
+  esbuild: {
+    loader: 'jsx',
+    include: /src\/.*\.jsx?$/,
+    // loader: "tsx",
+    // include: /src\/.*\.[tj]sx?$/,
+    exclude: [],
+  },
   build: {
-    outDir: 'dist',
+    outDir: 'build',
     rollupOptions: {
       input: './src/core/index.jsx',
     },
@@ -23,6 +31,17 @@ export default defineConfig({
       loader: {
         '.js': 'jsx',
       },
+      plugins: [
+        {
+          name: 'load-js-files-as-jsx',
+          setup(build) {
+            build.onLoad({ filter: /src\/.*\.js$/ }, async args => ({
+              loader: 'jsx',
+              contents: await fs.readFile(args.path, 'utf8'),
+            }));
+          },
+        },
+      ],
     },
   },
   resolve: {
