@@ -1,4 +1,4 @@
-export const baseURL = 'http://172.17.1.123:8073';
+export const baseURL = 'https://strangely-backend.onrender.com';
 export const chatEngineUrl = 'https://api.chatengine.io';
 
 export const loginSignupService = {
