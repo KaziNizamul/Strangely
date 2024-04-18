@@ -27,5 +27,5 @@ root.render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </ErrorBoundary>,
+  </ErrorBoundary>
 );
