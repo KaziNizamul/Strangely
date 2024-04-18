@@ -13,12 +13,14 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    mimeType: {
-      '.js': 'application/javascript',
-      '.mjs': 'application/javascript',
-      '.jsx': 'application/javascript',
-      '.tsx': 'application/javascript',
-    },
+    mimeTypes: {
+    '.js': 'application/javascript',
+    '.mjs': 'application/javascript',
+    '.jsx': 'application/javascript',
+    '.tsx': 'application/javascript',
+    '.ts': 'application/javascript'
+  }
+
   },
   test: {
     globals: true,
