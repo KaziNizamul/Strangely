@@ -14,7 +14,7 @@ export default defineConfig({
     exclude: [],
   },
   build: {
-    outDir: 'build',
+    outDir: 'dist',
     rollupOptions: {
       input: './src/core/index.jsx',
     },
