@@ -2,7 +2,6 @@
   "name": "strangely",
   "version": "1.0.0",
   "main": "src/core/index.jsx",
-  "repository": "git@git.cs.dal.ca:courses/2023-fall/csci-5308/Group14.git",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
