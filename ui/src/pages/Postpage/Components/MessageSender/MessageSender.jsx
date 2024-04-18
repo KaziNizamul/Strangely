@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useRef, useEffect } from 'react';
 /* external imports */
