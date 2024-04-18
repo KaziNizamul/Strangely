@@ -8,7 +8,15 @@ Strangely is an innovative web platform that facilitates connections between str
   ![Coverage(https://img.shields.io/badge/coverage-85%25-blue)](https://img.shields.io/badge/coverage-85%25-blue)
   ![pipeline(https://img.shields.io/badge/pipeline-passed-green)](https://img.shields.io/badge/pipeline-passed-green) 
 
-<br><hr>
+<br>
+
+<hr>
+
+https://github.com/KaziNizamul/Strangely/assets/19683035/cb5ea4c8-dff3-4eb3-ab8c-cce4a9e94906
+
+<hr>
+
+
 
 ## Table of Contents
 [**Documentation**](#documentation)
@@ -590,10 +598,6 @@ For some of our APIs we have followed Test driven developement approach.
 <p>• velocity: 1.7 - Template engine.</p>
 <p>• jakarta.validation-api: 3.0.2 - Jakarta Bean Validation API.</p>
 <p>• spring-context-support: 6.0.12 - Support classes for integrating common third.</p>
-
-# ☑️ Demo Video (Features) <a name = "demo"></a>
-
-![Demo Video](./maintainance_&_report/DemoVideo/DemoVideo.mp4)
 
 
 # Features
