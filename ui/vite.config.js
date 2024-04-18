@@ -9,7 +9,7 @@ export default defineConfig({
     eslint(),
   ],
   build: {
-    outDir: 'build',
+    outDir: 'dist',
     rollupOptions: {
       input: './src/core/index.jsx',
     },
