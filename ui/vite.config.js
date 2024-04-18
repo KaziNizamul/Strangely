@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      input: './src/core/index.js',
+      input: './src/core/index.jsx',
     },
   },
   server: {
