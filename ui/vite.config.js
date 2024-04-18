@@ -6,7 +6,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [react(), eslint()],
   build: {
-    outDir: 'build',
+    outDir: 'dist',
     rollupOptions: {
       input: './src/core/index.jsx',
     },
