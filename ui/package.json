@@ -1,7 +1,7 @@
 {
   "name": "strangely",
   "version": "1.0.0",
-  "main": "src/core/index.jsx",
+  "main": "src/core/index.js",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
