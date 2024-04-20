@@ -1,0 +1,114 @@
+stages: 
+  - build
+  - tests
+  - publish
+  - deploy
+
+backend-build-job:
+  stage: build
+  tags: 
+    - deployment
+  image: maven:3.8.3-openjdk-17
+  script:
+    - echo "running backend BUILD job"
+    - cd backend/
+    - mvn clean install -DskipTests
+    - echo "✨ Backend job finished successfully ✅"
+  artifacts:
+    paths:
+    - backend/target/*.jar
+
+
+frontend-build-job:
+  stage: build
+  tags: 
+  - deployment
+  image: node:18.18
+  script:
+      - echo "running frontend BUILD job"
+      - cd ui/
+      - yarn install
+      - yarn build
+      - echo "✨ Frontend job finished successfully ✅"
+  artifacts:
+    paths:
+    - ui/build/*
+
+backend-test-job: 
+  stage: tests
+  image: maven:3.8.3-openjdk-17
+  tags: 
+  - deployment
+  script:
+    - echo "running backend TEST job"
+    - cd backend/
+    - mvn verify
+    - echo "✨ Backend test job finished successfully ✅"
+
+# frontend-test-job:
+#   stage: tests
+#   image: node:18.18
+#   script:
+#     - echo "running frontend TEST job"
+#     - cd ui/
+#     - yarn install
+#     - yarn run test
+#     - echo "✨ Frontend test job finished successfully ✅"
+
+publish:
+  image: docker:latest
+  stage: publish
+  tags: 
+    - deployment
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_HOST: "tcp://docker:2375"
+  services:
+    - docker:dind
+  script:
+    - docker --version
+    - echo $SERVER_IP
+    - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PWD docker.io
+
+    - cd backend/ # backend publish
+    - docker build -t docker.io/csci5308vm14/strangely:backend_$CI_COMMIT_SHORT_SHA .
+    - docker push docker.io/csci5308vm14/strangely:backend_$CI_COMMIT_SHORT_SHA
+  
+    - cd ../ui/  # frontend publish
+    - docker build -t docker.io/csci5308vm14/strangely:ui_$CI_COMMIT_SHORT_SHA .
+    - docker push docker.io/csci5308vm14/strangely:ui_$CI_COMMIT_SHORT_SHA
+
+  only:
+    - main
+
+deploy:
+  image: alpine:latest
+  stage: deploy
+  tags:
+    - deployment
+  script:
+    - chmod og= $ID_RSA
+    - apk update && apk add openssh-client
+
+    # login
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PWD docker.io"
+
+    # code pull
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker pull docker.io/csci5308vm14/strangely:backend_$CI_COMMIT_SHORT_SHA"
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker pull docker.io/csci5308vm14/strangely:ui_$CI_COMMIT_SHORT_SHA"
+    
+    # remove earlier code
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker container rm -f my-app-backend || true"
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker container rm -f my-app-ui || true"
+    
+    # run container with specific ports
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker run -d -p 8073:8080 --name my-app-backend docker.io/csci5308vm14/strangely:backend_$CI_COMMIT_SHORT_SHA"
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker run -d -p 8074:5173 --name my-app-ui docker.io/csci5308vm14/strangely:ui_$CI_COMMIT_SHORT_SHA"
+    
+  environment:
+    name: production
+    url: http://172.17.1.123:8074 # mapping to frontend env
+  only:
+    - main
+
+
